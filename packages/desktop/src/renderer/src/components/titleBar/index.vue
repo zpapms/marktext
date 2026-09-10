@@ -8,7 +8,8 @@
         { active: active },
         { 'tabs-visible': showTabBar },
         { frameless: titleBarStyle === 'custom' },
-        { isOsx: isOsx }
+        { isOsx: isOsx },
+        { 'with-window-controls': showWindowControls }
       ]"
     >
       <div class="title" @dblclick.stop="toggleMaxmizeOnMacOS">
@@ -57,7 +58,7 @@
         </div>
       </div>
       <div
-        v-if="titleBarStyle === 'custom' && !isFullScreen && !isOsx"
+        v-if="showWindowControls"
         class="right-toolbar"
         :class="[{ 'title-no-drag': titleBarStyle === 'custom' }]"
       >
@@ -171,6 +172,14 @@ const paths = computed(() => {
 
 const showCustomTitleBar = computed(() => {
   return titleBarStyle.value === 'custom' && !isOsx
+})
+
+// The custom window controls (close / minimize / maximize) are rendered on the
+// right edge for non-macOS platforms with the "custom" title bar style. When
+// they are visible we must reserve room for them so the sidebar toggle does not
+// overlap the close button.
+const showWindowControls = computed(() => {
+  return titleBarStyle.value === 'custom' && !isFullScreen.value && !isOsx
 })
 
 const showTitleBar = computed(() => {
@@ -433,6 +442,16 @@ div.title > span {
 .title-bar-toggle:focus-within {
   opacity: 1;
   pointer-events: auto;
+}
+/* Windows/Linux custom title bar: the window controls (close / minimize /
+   maximize) occupy the right-most 138px (3 x 46px). Park the sidebar toggle
+   just to their left, and reserve matching right padding on the centred title
+   so the toggle never collides with the close button. */
+.title-bar.with-window-controls .title {
+  padding-right: 178px;
+}
+.title-bar.with-window-controls .title-bar-toggle {
+  right: 138px;
 }
 .tb-btn {
   position: relative;
