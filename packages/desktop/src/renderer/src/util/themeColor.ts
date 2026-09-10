@@ -25,6 +25,7 @@ import oxocarbonDarkTheme from '../assets/themes/oxocarbon-dark.theme.css?inline
 import kanagawaTheme from '../assets/themes/kanagawa.theme.css?inline'
 import nightfoxTheme from '../assets/themes/nightfox.theme.css?inline'
 import cyberdreamTheme from '../assets/themes/cyberdream.theme.css?inline'
+import cobaltTheme from '../assets/themes/cobalt.theme.css?inline'
 
 // New gogh themes - Light
 import catppuccinLatteTheme from '../assets/themes/catppuccin-latte.theme.css?inline'
@@ -34,6 +35,15 @@ import solarizedLightTheme from '../assets/themes/solarized-light.theme.css?inli
 import ayuLightTheme from '../assets/themes/ayu-light.theme.css?inline'
 import everforestLightTheme from '../assets/themes/everforest-light.theme.css?inline'
 import rosePineDawnTheme from '../assets/themes/rose-pine-dawn.theme.css?inline'
+import vueTheme from '../assets/themes/vue.theme.css?inline'
+
+// Typora community theme ports (light)
+import lapisTheme from '../assets/themes/lapis.theme.css?inline'
+import ursineTheme from '../assets/themes/ursine.theme.css?inline'
+
+// Typora community theme ports (dark)
+import blackoutTheme from '../assets/themes/blackout.theme.css?inline'
+import githubNightTheme from '../assets/themes/github-night.theme.css?inline'
 
 // Prism.js syntax highlighting themes
 import darkPrismTheme from '../assets/themes/prismjs/dark.theme.css?inline'
@@ -67,6 +77,12 @@ import nightfoxPrismTheme from '../assets/themes/prismjs/nightfox.theme.css?inli
 import cyberdreamPrismTheme from '../assets/themes/prismjs/cyberdream.theme.css?inline'
 import graphitePrismTheme from '../assets/themes/prismjs/graphite.theme.css?inline'
 import ulyssesPrismTheme from '../assets/themes/prismjs/ulysses.theme.css?inline'
+import vuePrismTheme from '../assets/themes/prismjs/vue.theme.css?inline'
+import cobaltPrismTheme from '../assets/themes/prismjs/cobalt.theme.css?inline'
+import lapisPrismTheme from '../assets/themes/prismjs/lapis.theme.css?inline'
+import ursinePrismTheme from '../assets/themes/prismjs/ursine.theme.css?inline'
+import blackoutPrismTheme from '../assets/themes/prismjs/blackout.theme.css?inline'
+import githubNightPrismTheme from '../assets/themes/prismjs/github-night.theme.css?inline'
 
 // Original themes
 export const dark = (): string => {
@@ -170,6 +186,11 @@ export const cyberdream = (): string => {
   return cyberdreamTheme + '\n' + cyberdreamPrismTheme
 }
 
+// Typora community theme ports
+export const cobalt = (): string => {
+  return cobaltTheme + '\n' + cobaltPrismTheme
+}
+
 // New gogh themes - Light (with matching Prism themes)
 export const catppuccinLatte = (): string => {
   return catppuccinLatteTheme + '\n' + catppuccinLattePrismTheme
@@ -197,4 +218,25 @@ export const everforestLight = (): string => {
 
 export const rosePineDawn = (): string => {
   return rosePineDawnTheme + '\n' + rosePineDawnPrismTheme
+}
+
+// Typora community theme ports
+export const vue = (): string => {
+  return vueTheme + '\n' + vuePrismTheme
+}
+
+export const lapis = (): string => {
+  return lapisTheme + '\n' + lapisPrismTheme
+}
+
+export const ursine = (): string => {
+  return ursineTheme + '\n' + ursinePrismTheme
+}
+
+export const blackout = (): string => {
+  return blackoutTheme + '\n' + blackoutPrismTheme
+}
+
+export const githubNight = (): string => {
+  return githubNightTheme + '\n' + githubNightPrismTheme
 }

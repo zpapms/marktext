@@ -21,7 +21,11 @@ export const railscastsThemes: readonly string[] = Object.freeze([
   'oxocarbon-dark',
   'kanagawa',
   'nightfox',
-  'cyberdream'
+  'cyberdream',
+  // Typora community themes (dark)
+  'cobalt',
+  'blackout',
+  'github-night'
 ])
 
 export const oneDarkThemes: readonly string[] = Object.freeze(['one-dark'])
@@ -42,18 +46,22 @@ const themeBackgroundColors: ReadonlyMap<string, string> = new Map([
   ['ayu-dark', '#0a0e14'],
   ['ayu-light', '#fafafa'],
   ['ayu-mirage', '#1f2430'],
+  ['blackout', '#000000'],
   ['catppuccin-latte', '#eff1f5'],
   ['catppuccin-mocha', '#1e1e2e'],
+  ['cobalt', '#141d28'],
   ['cyberdream', '#16181a'],
   ['dark', '#282828'],
   ['dracula', '#282a36'],
   ['everforest-dark', '#2d353b'],
   ['everforest-light', '#fdf6e3'],
+  ['github-night', '#0d1117'],
   ['graphite', '#f7f7f7'],
   ['gruvbox-dark', '#282828'],
   ['gruvbox-light', '#fbf1c7'],
   ['horizon-dark', '#1c1e26'],
   ['kanagawa', '#1f1f28'],
+  ['lapis', '#ffffff'],
   ['material-dark', '#34393f'],
   ['monokai-pro', '#2d2a2e'],
   ['nightfox', '#192330'],
@@ -70,7 +78,8 @@ const themeBackgroundColors: ReadonlyMap<string, string> = new Map([
   ['tokyo-night', '#1a1b26'],
   ['tokyo-night-light', '#d5d6db'],
   ['tokyo-night-storm', '#24283b'],
-  ['ulysses', '#f3f3f3']
+  ['ulysses', '#f3f3f3'],
+  ['vue', '#ffffff']
 ])
 
 const DARK_FALLBACK_BACKGROUND = '#282828'

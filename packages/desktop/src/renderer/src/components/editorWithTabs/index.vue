@@ -4,6 +4,7 @@
     :style="{ 'max-width': `calc(100vw - ${effectiveSideBarWidth}px)` }"
   >
     <tabs v-show="showTabBar" />
+    <format-toolbar />
     <div class="container">
       <editor
         :markdown="markdown"
@@ -19,6 +20,7 @@
       />
     </div>
     <tab-notifications />
+    <word-count />
   </div>
 </template>
 
@@ -29,6 +31,8 @@ import Tabs from './tabs.vue'
 import Editor from './editor.vue'
 import SourceCode from './sourceCode.vue'
 import TabNotifications from './notifications.vue'
+import FormatToolbar from '@/components/formatToolbar/index.vue'
+import WordCount from '@/components/wordCount/index.vue'
 
 defineProps<{
   markdown: string

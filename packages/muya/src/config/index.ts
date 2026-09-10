@@ -330,6 +330,9 @@ export const MUYA_DEFAULT_OPTIONS = {
     plantumlServer: 'https://www.plantuml.com/plantuml',
     sequenceTheme: 'hand' as 'hand' | 'simple', // hand / simple
     hideQuickInsertHint: false,
+    // Hide the paragraph front button (the small block-type/drag handle that
+    // floats to the left of a paragraph on hover).
+    hideParagraphFrontButton: false,
     hideLinkPopup: false,
     autoCheck: false,
     // Whether we should set spellcheck attribute on our container to highlight misspelled words.

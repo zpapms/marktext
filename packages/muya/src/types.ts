@@ -25,6 +25,7 @@ export interface IMuyaOptions {
     plantumlServer: string;
     sequenceTheme: 'hand' | 'simple';
     hideQuickInsertHint: boolean;
+    hideParagraphFrontButton: boolean;
     hideLinkPopup: boolean;
     autoCheck: boolean;
     spellcheckEnabled: boolean;

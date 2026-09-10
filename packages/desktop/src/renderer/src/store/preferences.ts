@@ -7,6 +7,7 @@ import { setLanguage } from '../i18n'
 // narrow casts on consumers that read raw values from disk.
 export type EndOfLine = 'default' | 'lf' | 'crlf'
 export type TitleBarStyle = 'custom' | 'native'
+export type WordCountPosition = 'top-right' | 'bottom-right'
 export type StartUpAction = 'restoreAll' | 'lastSession' | 'blank'
 export type TextDirection = 'ltr' | 'rtl'
 export type BulletListMarker = '*' | '+' | '-'
@@ -24,6 +25,9 @@ export interface PreferencesState {
   autoSave: boolean
   autoSaveDelay: number
   titleBarStyle: TitleBarStyle | string
+  titleBarShowPath: boolean
+  showWordCount: boolean
+  wordCountPosition: WordCountPosition | string
   openFilesInNewWindow: boolean
   openFolderInNewWindow: boolean
   zoom: number
@@ -48,6 +52,8 @@ export interface PreferencesState {
   trimUnnecessaryCodeBlockEmptyLines: boolean
   wrapCodeBlocks: boolean
   editorLineWidth: string
+  formatToolbar: boolean
+  formatToolbarAutoHide: boolean
 
   // ----- Markdown editing -----
   autoPairBracket: boolean
@@ -61,6 +67,7 @@ export interface PreferencesState {
   trimTrailingNewline: number
   textDirection: TextDirection | string
   hideQuickInsertHint: boolean
+  hideParagraphFrontButton: boolean
   imageInsertAction: ImageInsertAction | string
   imagePreferRelativeDirectory: boolean
   imageRelativeDirectoryBase: ImageRelativeDirectoryBase | string
@@ -142,6 +149,9 @@ export const usePreferencesStore = defineStore('preferences', {
     autoSave: false,
     autoSaveDelay: 5000,
     titleBarStyle: 'custom',
+    titleBarShowPath: false,
+    showWordCount: true,
+    wordCountPosition: 'bottom-right',
     openFilesInNewWindow: false,
     openFolderInNewWindow: false,
     zoom: 1.0,
@@ -165,6 +175,8 @@ export const usePreferencesStore = defineStore('preferences', {
     trimUnnecessaryCodeBlockEmptyLines: true,
     wrapCodeBlocks: false,
     editorLineWidth: '',
+    formatToolbar: true,
+    formatToolbarAutoHide: true,
 
     autoPairBracket: true,
     autoPairMarkdownSyntax: true,
@@ -176,7 +188,8 @@ export const usePreferencesStore = defineStore('preferences', {
 
     trimTrailingNewline: 2,
     textDirection: 'ltr',
-    hideQuickInsertHint: false,
+    hideQuickInsertHint: true,
+    hideParagraphFrontButton: false,
     imageInsertAction: 'folder',
     imagePreferRelativeDirectory: false,
     imageRelativeDirectoryBase: 'file',
@@ -198,7 +211,7 @@ export const usePreferencesStore = defineStore('preferences', {
     sequenceTheme: 'hand',
     plantumlServer: 'https://www.plantuml.com/plantuml',
 
-    theme: 'light',
+    theme: 'vue',
     followSystemTheme: true,
     lightModeTheme: 'light',
     darkModeTheme: 'dark',

@@ -15,6 +15,21 @@
     "enum": ["custom", "native"],
     "default": "custom"
   },
+  "titleBarShowPath": {
+    "description": "General--Show the folder path in the title bar. When disabled, the title bar shows only the file name.",
+    "type": "boolean",
+    "default": false
+  },
+  "showWordCount": {
+    "description": "General--Show the word count indicator.",
+    "type": "boolean",
+    "default": true
+  },
+  "wordCountPosition": {
+    "description": "General--The corner in which the word count indicator is shown.",
+    "enum": ["top-right", "bottom-right"],
+    "default": "bottom-right"
+  },
   "openFilesInNewWindow": {
     "description": "General--Open files in a new window.",
     "type": "boolean",
@@ -100,6 +115,16 @@
     "type": "string",
     "pattern": "^(?:$|[0-9]+(?:ch|px|%)$)",
     "default": ""
+  },
+  "formatToolbar": {
+    "description": "Editor--Show a formatting toolbar at the top of the editor so text styles can be applied by clicking instead of typing Markdown syntax.",
+    "type": "boolean",
+    "default": true
+  },
+  "formatToolbarAutoHide": {
+    "description": "Editor--Only reveal the formatting toolbar while the mouse hovers over the top of the editor; when disabled the toolbar stays visible.",
+    "type": "boolean",
+    "default": true
   },
   "codeFontSize": {
     "description": "Editor--Font size in code Block, the range is 12 ~ 18",
@@ -204,6 +229,11 @@
   "hideQuickInsertHint": {
     "description": "Editor--Hide hint for quickly creating paragraphs",
     "type": "boolean",
+    "default": true
+  },
+  "hideParagraphFrontButton": {
+    "description": "Editor--Hide the paragraph action button that floats to the left of a paragraph",
+    "type": "boolean",
     "default": false
   },
   "hideLinkPopup": {
@@ -290,7 +320,7 @@
   "theme": {
     "description": "Theme--Select the theme used in MarkText",
     "type": "string",
-    "default": "light"
+    "default": "vue"
   },
   "followSystemTheme": {
     "description": "Theme--Use separate theme in dark mode.",

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="showTitleBar"
-      class="title-bar-editor-bg"
-      :class="{ 'tabs-visible': showTabBar }"
-    />
+    <div v-if="showTitleBar" class="title-bar-editor-bg" :class="{ 'tabs-visible': showTabBar }" />
     <div
       v-if="showTitleBar"
       class="title-bar"
@@ -15,36 +11,36 @@
         { isOsx: isOsx }
       ]"
     >
-      <div
-        class="title"
-        @dblclick.stop="toggleMaxmizeOnMacOS"
-      >
+      <div class="title" @dblclick.stop="toggleMaxmizeOnMacOS">
         <span v-if="!filename">MarkText</span>
         <span v-else>
-          <span
-            v-for="(path, index) of paths"
-            :key="index"
-          >
-            {{ path }}
-            <el-icon
-              class="path-arrow"
-              :size="12"
-            >
-              <ArrowRight />
-            </el-icon>
-          </span>
-          <span
-            class="filename"
-            :class="{ isOsx: platform === 'darwin' }"
-            @click="rename"
-          >
+          <template v-if="titleBarShowPath">
+            <span v-for="(path, index) of paths" :key="index">
+              {{ path }}
+              <el-icon class="path-arrow" :size="12">
+                <ArrowRight />
+              </el-icon>
+            </span>
+          </template>
+          <span class="filename" :class="{ isOsx: platform === 'darwin' }" @click="rename">
             {{ filename }}
           </span>
-          <span
-            class="save-dot"
-            :class="{ show: !isSaved }"
-          />
+          <span class="save-dot" :class="{ show: !isSaved }" />
         </span>
+      </div>
+      <div v-if="showTitleBar" class="title-bar-toggle title-no-drag" :class="{ isOsx }">
+        <button
+          type="button"
+          class="tb-btn"
+          :class="{ collapsed: !showSideBar }"
+          :data-tooltip="t('menu.view.toggleSidebar')"
+          @click.stop="toggleSideBar"
+        >
+          <svg viewBox="0 0 24 24" class="tb-svg">
+            <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
+            <path d="M9.5 4.5v15" />
+          </svg>
+        </button>
       </div>
       <div :class="showCustomTitleBar ? 'left-toolbar title-no-drag' : 'right-toolbar'">
         <div
@@ -54,31 +50,6 @@
         >
           <span class="text-center-vertical">&#9776;</span>
         </div>
-        <el-tooltip
-          v-if="wordCount"
-          class="item"
-          :content="`${wordCount[show]} ${HASH[show].full + (wordCount[show] > 1 ? 's' : '')}`"
-          placement="bottom-end"
-        >
-          <template #content>
-            <div class="title-item">
-              <span class="front">{{ t('menu.counter.words') }}:</span><span class="text">{{ wordCount['word'] }}</span>
-            </div>
-            <div class="title-item">
-              <span class="front">{{ t('menu.counter.characters') }}:</span><span class="text">{{ wordCount['character'] }}</span>
-            </div>
-            <div class="title-item">
-              <span class="front">{{ t('menu.counter.paragraphs') }}:</span><span class="text">{{ wordCount['paragraph'] }}</span>
-            </div>
-          </template>
-          <div
-            v-if="wordCount"
-            class="word-count"
-            @click.stop="handleWordClick"
-          >
-            <span class="text-center-vertical">{{ `${HASH[show].short} ${wordCount[show]}` }}</span>
-          </div>
-        </el-tooltip>
       </div>
       <div
         v-if="titleBarStyle === 'custom' && !isFullScreen && !isOsx"
@@ -90,10 +61,7 @@
           @click.stop="handleCloseClick"
         >
           <div>
-            <svg
-              width="10"
-              height="10"
-            >
+            <svg width="10" height="10">
               <path :d="windowIconClose" />
             </svg>
           </div>
@@ -103,18 +71,9 @@
           @click.stop="handleMaximizeClick"
         >
           <div>
-            <svg
-              width="10"
-              height="10"
-            >
-              <path
-                v-show="!isMaximized"
-                :d="windowIconMaximize"
-              />
-              <path
-                v-show="isMaximized"
-                :d="windowIconRestore"
-              />
+            <svg width="10" height="10">
+              <path v-show="!isMaximized" :d="windowIconMaximize" />
+              <path v-show="isMaximized" :d="windowIconRestore" />
             </svg>
           </div>
         </div>
@@ -123,10 +82,7 @@
           @click.stop="handleMinimizeClick"
         >
           <div>
-            <svg
-              width="10"
-              height="10"
-            >
+            <svg width="10" height="10">
               <path :d="windowIconMinimize" />
             </svg>
           </div>
@@ -146,9 +102,9 @@ import { PATH_SEPARATOR } from '../../config'
 import { isOsx as isOsxPlatform } from '@/util'
 import { shouldShowInAppTitleBar } from './visibility'
 import { useEditorStore } from '@/store/editor'
+import bus from '@/bus'
 import { useI18n } from 'vue-i18n'
 import { ArrowRight } from '@element-plus/icons-vue'
-import type { FileWordCount } from '@shared/types/files'
 
 interface ProjectInfo {
   name?: string
@@ -160,7 +116,6 @@ const props = defineProps<{
   filename?: string
   pathname?: string
   active?: boolean
-  wordCount?: FileWordCount | null
   platform?: string
   isSaved?: boolean
 }>()
@@ -171,24 +126,6 @@ const editorStore = useEditorStore()
 const { t } = useI18n()
 
 const isOsx = isOsxPlatform
-const HASH = {
-  word: {
-    short: 'W',
-    full: 'word'
-  },
-  character: {
-    short: 'C',
-    full: 'character'
-  },
-  paragraph: {
-    short: 'P',
-    full: 'paragraph'
-  },
-  all: {
-    short: 'A',
-    full: '(with space)character'
-  }
-}
 const windowIconMinimize = minimizePath
 const windowIconRestore = restorePath
 const windowIconMaximize = maximizePath
@@ -196,7 +133,6 @@ const windowIconClose = closePath
 
 const isFullScreen = ref(false)
 const isMaximized = ref(false)
-const show = ref<'word' | 'paragraph' | 'character' | 'all'>('word')
 
 onMounted(async () => {
   try {
@@ -209,8 +145,18 @@ onMounted(async () => {
   } catch {}
 })
 
-const { titleBarStyle } = storeToRefs(preferencesStore)
-const { showTabBar } = storeToRefs(layoutStore)
+const { titleBarStyle, titleBarShowPath } = storeToRefs(preferencesStore)
+const { showTabBar, showSideBar } = storeToRefs(layoutStore)
+
+const toggleSideBar = (): void => {
+  const willShow = !showSideBar.value
+  bus.emit('view:toggle-layout-entry', 'showSideBar')
+  // If the sidebar was previously collapsed down to the 45px icon rail,
+  // restore a real panel so the toggle always reveals something useful.
+  if (willShow && !layoutStore.rightColumn) {
+    layoutStore.SET_LAYOUT({ rightColumn: 'files' })
+  }
+}
 
 const paths = computed(() => {
   if (!props.pathname) return []
@@ -242,15 +188,6 @@ watch(
     document.title = title
   }
 )
-
-const handleWordClick = () => {
-  const ITEMS = ['word', 'paragraph', 'character', 'all'] as const
-  const len = ITEMS.length
-  let index = ITEMS.indexOf(show.value)
-  index += 1
-  if (index >= len) index = 0
-  show.value = ITEMS[index]!
-}
 
 const handleCloseClick = () => {
   window.electron.windowControl.close()
@@ -423,26 +360,6 @@ div.title > span {
   }
 }
 
-.word-count {
-  -webkit-app-region: no-drag;
-  cursor: pointer;
-  font-size: 14px;
-  color: var(--editorColor30);
-  text-align: center;
-  line-height: 24px;
-  padding: 0 5px;
-  box-sizing: border-box;
-  transition: all 0.25s ease-in-out;
-  & > .text-center-vertical {
-    padding: 2px 5px;
-    border-radius: 3px;
-  }
-  &:hover > span {
-    background: var(--sideBarBgColor);
-    color: var(--sideBarTitleColor);
-  }
-}
-
 .title-no-drag {
   -webkit-app-region: no-drag;
 }
@@ -482,17 +399,100 @@ div.title > span {
   vertical-align: middle;
   line-height: normal;
 }
-</style>
 
-<style>
-.title-item {
-  height: 28px;
-  line-height: 28px;
-  & .front {
-    opacity: 0.7;
-  }
-  & .text {
-    margin-left: 10px;
-  }
+/* ---- Sidebar toggle button ---- */
+.title-bar-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  height: var(--titleBarHeight);
+  padding-right: 10px;
+  -webkit-app-region: no-drag;
+  /* Hidden by default; revealed when the pointer enters the title bar. */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+/* Reveal on hovering the title bar, and keep it reachable while focused. */
+.title-bar:hover .title-bar-toggle,
+.title-bar-toggle:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+}
+.tb-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--editorColor50);
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+.tb-btn:hover {
+  color: var(--editorColor);
+  background: var(--sideBarBgColor);
+}
+.tb-btn.collapsed {
+  color: var(--editorColor30);
+}
+.tb-svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---- Shared hover tooltip (data-tooltip) ---- */
+.tb-btn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  z-index: 60;
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  background: rgba(48, 49, 51, 0.96);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+  color: #f5f5f5;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -3px);
+  pointer-events: none;
+  transition:
+    opacity 0.12s ease,
+    transform 0.12s ease;
+}
+.tb-btn[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* The sidebar toggle sits at the top-right, so anchor its tooltip to the
+   right edge to keep it inside the window. */
+.title-bar-toggle .tb-btn[data-tooltip]::after {
+  left: auto;
+  right: 0;
+  transform: translate(0, -3px);
+}
+.title-bar-toggle .tb-btn[data-tooltip]:hover::after {
+  transform: translate(0, 0);
 }
 </style>

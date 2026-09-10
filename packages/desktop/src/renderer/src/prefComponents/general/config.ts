@@ -12,6 +12,17 @@ export const getTitleBarStyleOptions = (): PrefSelectOption<string>[] => [
   }
 ]
 
+export const getWordCountPositionOptions = (): PrefSelectOption<string>[] => [
+  {
+    label: t('preferences.general.window.wordCountPosition.topRight'),
+    value: 'top-right'
+  },
+  {
+    label: t('preferences.general.window.wordCountPosition.bottomRight'),
+    value: 'bottom-right'
+  }
+]
+
 export const zoomOptions: PrefSelectOption<number>[] = [
   {
     label: '50.0%',

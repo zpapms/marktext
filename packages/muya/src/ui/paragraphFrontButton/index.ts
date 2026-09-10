@@ -109,6 +109,15 @@ export class ParagraphFrontButton {
         const { _container: container } = this;
         const { eventCenter } = this.muya;
 
+        // Respect the `hideParagraphFrontButton` option. Reading the live
+        // option in the mousemove handler below covers the initial state and
+        // runtime toggles; this subscription hides an already-visible button
+        // the instant the option is switched off (see Muya.setOptions).
+        eventCenter.subscribe('muya-paragraph-front-button', (visible: boolean) => {
+            if (!visible)
+                this.hide();
+        });
+
         // attachDOMEvent's listener is typed as `EventListener` ((evt:
         // Event) => void). Take Event and narrow with the `isMouseEvent`
         // guard — same pattern as `mouseMove` below — rather than casting
@@ -116,6 +125,10 @@ export class ParagraphFrontButton {
         const mousemoveHandler = throttle((event: Event) => {
             if (this._disableListen)
                 return;
+            if (this.muya.options.hideParagraphFrontButton) {
+                this.hide();
+                return;
+            }
             if (!isMouseEvent(event))
                 return;
 

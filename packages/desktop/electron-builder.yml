@@ -138,7 +138,6 @@ mac:
   notarize: false
   target:
     - dmg
-    - zip
 dmg:
   artifactName: 'marktext-mac-${arch}-${version}.${ext}'
   contents:
