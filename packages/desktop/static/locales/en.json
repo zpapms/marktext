@@ -588,6 +588,7 @@
           "rtl": "Right to Left"
         },
         "hideQuickInsertHint": "Hide quick insert hint",
+        "hideParagraphFrontButton": "Hide the paragraph action button on the left of a paragraph",
         "hideLinkPopup": "Hide link popup",
         "autoCheck": "Auto check",
         "autoNormalizeLineEndings": "Auto-normalize line endings to LF on open",

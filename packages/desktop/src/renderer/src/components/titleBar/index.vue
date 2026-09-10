@@ -22,7 +22,12 @@
               </el-icon>
             </span>
           </template>
-          <span class="filename" :class="{ isOsx: platform === 'darwin' }" @click="rename">
+          <span
+            class="filename"
+            :class="{ isOsx: platform === 'darwin' }"
+            :title="t('menu.file.rename')"
+            @click="rename"
+          >
             {{ filename }}
           </span>
           <span class="save-dot" :class="{ show: !isSaved }" />
@@ -216,10 +221,12 @@ const handleMenuClick = () => {
   window.electron.windowControl.popupApplicationMenu({ x: 23, y: 20 })
 }
 
-const rename = () => {
-  if (props.platform === 'darwin') {
-    editorStore.RESPONSE_FOR_RENAME()
-  }
+const rename = (): void => {
+  // Clicking the filename in the title bar renames the current document.
+  // RESPONSE_FOR_RENAME falls back to a "save as" flow for unsaved files,
+  // so this is safe on every platform that renders the in-app title bar.
+  if (!editorStore.currentFile) return
+  editorStore.RESPONSE_FOR_RENAME()
 }
 
 const onMaximize = () => {
@@ -295,6 +302,11 @@ img {
   transition: all 0.25s ease-in-out;
   & .filename {
     transition: all 0.25s ease-in-out;
+    /* The filename sits inside the draggable title bar. Mark it as a
+       no-drag region so the click-to-rename handler actually fires. */
+    -webkit-app-region: no-drag;
+    app-region: no-drag;
+    cursor: pointer;
   }
   &::after {
     content: '';

@@ -588,6 +588,7 @@
           "rtl": "从右到左"
         },
         "hideQuickInsertHint": "隐藏快速插入提示",
+        "hideParagraphFrontButton": "隐藏段落左侧的功能按钮",
         "hideLinkPopup": "隐藏链接弹出窗口",
         "autoCheck": "自动检查",
         "autoNormalizeLineEndings": "打开时自动将行尾规范化为 LF",
