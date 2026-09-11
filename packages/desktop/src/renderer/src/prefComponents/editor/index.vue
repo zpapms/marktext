@@ -168,6 +168,11 @@
           :on-change="(value) => onSelectChange('hideQuickInsertHint', value)"
         />
         <bool
+          :description="t('preferences.editor.misc.hideParagraphFrontButton')"
+          :bool="hideParagraphFrontButton"
+          :on-change="(value) => onSelectChange('hideParagraphFrontButton', value)"
+        />
+        <bool
           :description="t('preferences.editor.misc.hideLinkPopup')"
           :bool="hideLinkPopup"
           :on-change="(value) => onSelectChange('hideLinkPopup', value)"
@@ -176,6 +181,16 @@
           :description="t('preferences.editor.misc.autoCheck')"
           :bool="autoCheck"
           :on-change="(value) => onSelectChange('autoCheck', value)"
+        />
+        <bool
+          :description="t('preferences.editor.misc.formatToolbar')"
+          :bool="formatToolbar"
+          :on-change="(value) => onSelectChange('formatToolbar', value)"
+        />
+        <bool
+          :description="t('preferences.editor.misc.formatToolbarAutoHide')"
+          :bool="formatToolbarAutoHide"
+          :on-change="(value) => onSelectChange('formatToolbarAutoHide', value)"
         />
       </template>
     </compound>
@@ -221,8 +236,11 @@ const {
   codeBlockLineNumbers,
   trimUnnecessaryCodeBlockEmptyLines,
   hideQuickInsertHint,
+  hideParagraphFrontButton,
   hideLinkPopup,
   autoCheck,
+  formatToolbar,
+  formatToolbarAutoHide,
   autoNormalizeLineEndings,
   wrapCodeBlocks,
   editorLineWidth,

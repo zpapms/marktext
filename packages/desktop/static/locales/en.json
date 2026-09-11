@@ -1,4 +1,21 @@
 {
+  "formatToolbar": {
+    "title": "Formatting Toolbar",
+    "paragraphStyle": "Paragraph style",
+    "font": "Font",
+    "fontSize": "Font size",
+    "undo": "Undo",
+    "redo": "Redo",
+    "clearFormat": "Clear formatting"
+  },
+  "wordCount": {
+    "short": {
+      "word": "W",
+      "character": "C",
+      "paragraph": "P",
+      "all": "A"
+    }
+  },
   "menu": {
     "counter": {
       "words": "Words",
@@ -150,6 +167,7 @@
       "cadmiumLight": "Cadmium Light",
       "catppuccinLatte": "Catppuccin Latte",
       "catppuccinMocha": "Catppuccin Mocha",
+      "cobalt": "Cobalt",
       "cyberdream": "cyberdream",
       "dracula": "Dracula",
       "everforestDark": "Everforest Dark",
@@ -175,7 +193,12 @@
       "tokyoNight": "Tokyo Night",
       "tokyoNightLight": "Tokyo Night Light",
       "tokyoNightStorm": "Tokyo Night Storm",
-      "ulyssesLight": "Ulysses Light"
+      "ulyssesLight": "Ulysses Light",
+      "vue": "Vue",
+      "ursine": "Ursine",
+      "lapis": "Lapis",
+      "blackout": "Blackout",
+      "githubNight": "GitHub Night"
     }
   },
   "contextMenu": {
@@ -397,6 +420,7 @@
         "trimTrailingNewline": "The trim trailing newline option",
         "textDirection": "The writing text direction",
         "hideQuickInsertHint": "Hide hint for quickly creating paragraphs",
+        "hideParagraphFrontButton": "Hide the paragraph action button on the left of a paragraph",
         "hideLinkPopup": "Hide link popup when the cursor is hover on the link",
         "autoCheck": "Whether to automatically check related task",
         "preferLooseListItem": "The preferred list type",
@@ -456,7 +480,14 @@
         "hideScrollbars": "Hide scrollbars",
         "openFilesInNewWindow": "Open files in new window",
         "openFoldersInNewWindow": "Open folders in new window",
-        "zoom": "Zoom"
+        "zoom": "Zoom",
+        "showPathInTitleBar": "Show folder path in the title bar",
+        "showWordCount": "Show word count",
+        "wordCountPosition": {
+          "title": "Word count position",
+          "topRight": "Top right",
+          "bottomRight": "Bottom right"
+        }
       },
       "startup": {
         "title": "Startup Options",
@@ -558,10 +589,13 @@
           "rtl": "Right to Left"
         },
         "hideQuickInsertHint": "Hide quick insert hint",
+        "hideParagraphFrontButton": "Hide the paragraph action button on the left of a paragraph",
         "hideLinkPopup": "Hide link popup",
         "autoCheck": "Auto check",
         "autoNormalizeLineEndings": "Auto-normalize line endings to LF on open",
-        "wrapCodeBlocks": "Wrap code blocks"
+        "wrapCodeBlocks": "Wrap code blocks",
+        "formatToolbar": "Show formatting toolbar",
+        "formatToolbarAutoHide": "Auto-hide the toolbar until the mouse moves to the top of the editor"
       }
     },
     "image": {

@@ -32,6 +32,7 @@ import {
   kanagawa,
   nightfox,
   cyberdream,
+  cobalt,
   // New gogh themes - Light
   catppuccinLatte,
   gruvboxLight,
@@ -39,7 +40,13 @@ import {
   solarizedLight,
   ayuLight,
   everforestLight,
-  rosePineDawn
+  rosePineDawn,
+  vue,
+  // Typora community theme ports
+  lapis,
+  ursine,
+  blackout,
+  githubNight
 } from './themeColor'
 import { isLinux } from './index'
 
@@ -149,6 +156,9 @@ export const addThemeStyle = (theme: string): void => {
     case 'cyberdream':
       themeStyleEle.innerHTML = patchTheme(cyberdream())
       break
+    case 'cobalt':
+      themeStyleEle.innerHTML = patchTheme(cobalt())
+      break
     // New gogh themes - Light
     case 'catppuccin-latte':
       themeStyleEle.innerHTML = patchTheme(catppuccinLatte())
@@ -170,6 +180,9 @@ export const addThemeStyle = (theme: string): void => {
       break
     case 'rose-pine-dawn':
       themeStyleEle.innerHTML = patchTheme(rosePineDawn())
+      break
+    case 'vue':
+      themeStyleEle.innerHTML = patchTheme(vue())
       break
     default:
       break

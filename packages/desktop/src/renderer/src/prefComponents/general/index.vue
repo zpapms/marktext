@@ -61,6 +61,23 @@
           :options="zoomOptions"
           :on-change="(value) => onSelectChange('zoom', value)"
         />
+        <bool
+          :description="t('preferences.general.window.showPathInTitleBar')"
+          :bool="titleBarShowPath"
+          :on-change="(value) => onSelectChange('titleBarShowPath', value)"
+        />
+        <bool
+          :description="t('preferences.general.window.showWordCount')"
+          :bool="showWordCount"
+          :on-change="(value) => onSelectChange('showWordCount', value)"
+        />
+        <cur-select
+          v-if="showWordCount"
+          :description="t('preferences.general.window.wordCountPosition.title')"
+          :value="wordCountPosition"
+          :options="getWordCountPositionOptions()"
+          :on-change="(value) => onSelectChange('wordCountPosition', value)"
+        />
       </template>
     </compound>
 
@@ -114,10 +131,7 @@
       <template #children>
         <h6>{{ t('preferences.general.startup.layoutOptions') }}</h6>
         <section>
-          <el-radio-group
-            v-model="restoreLayoutState"
-            class="startup-action-ctrl"
-          >
+          <el-radio-group v-model="restoreLayoutState" class="startup-action-ctrl">
             <el-radio :label="true">
               {{ t('preferences.general.startup.restorePreviousState') }}
             </el-radio>
@@ -128,10 +142,7 @@
         </section>
         <h6>{{ t('preferences.general.startup.startupFilesFolders') }}</h6>
         <section>
-          <el-radio-group
-            v-model="startUpAction"
-            class="startup-action-ctrl"
-          >
+          <el-radio-group v-model="startUpAction" class="startup-action-ctrl">
             <!--
               Hide "lastState" for now (#2064).
             <el-radio class="ag-underdevelop" label="lastState">Restore last editor session</el-radio>
@@ -147,10 +158,7 @@
                 {{ t('preferences.general.startup.openDefaultDirectory')
                 }}<span>: {{ defaultDirectoryToOpen }}</span>
               </el-radio>
-              <el-button
-                size="small"
-                @click="selectDefaultDirectoryToOpen"
-              >
+              <el-button size="small" @click="selectDefaultDirectoryToOpen">
                 {{ t('preferences.general.startup.selectFolder') }}
               </el-button>
             </div>
@@ -197,6 +205,7 @@ import { isOsx } from '@/util'
 
 import {
   getTitleBarStyleOptions,
+  getWordCountPositionOptions,
   zoomOptions,
   getFileSortByOptions,
   getFileSortOrderOptions,
@@ -210,6 +219,9 @@ const {
   autoSave,
   autoSaveDelay,
   titleBarStyle,
+  titleBarShowPath,
+  showWordCount,
+  wordCountPosition,
   defaultDirectoryToOpen,
   openFilesInNewWindow,
   openFolderInNewWindow,

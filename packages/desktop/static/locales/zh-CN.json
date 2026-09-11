@@ -1,4 +1,21 @@
 {
+  "formatToolbar": {
+    "title": "格式工具栏",
+    "paragraphStyle": "段落样式",
+    "font": "字体",
+    "fontSize": "字号",
+    "undo": "撤销",
+    "redo": "重做",
+    "clearFormat": "清除格式"
+  },
+  "wordCount": {
+    "short": {
+      "word": "字",
+      "character": "符",
+      "paragraph": "段",
+      "all": "全"
+    }
+  },
   "menu": {
     "counter": {
       "words": "字数",
@@ -150,6 +167,7 @@
       "cadmiumLight": "Cadmium 浅色",
       "catppuccinLatte": "Catppuccin Latte",
       "catppuccinMocha": "Catppuccin Mocha",
+      "cobalt": "Cobalt 深色",
       "cyberdream": "cyberdream",
       "dracula": "Dracula",
       "everforestDark": "Everforest 深色",
@@ -175,7 +193,12 @@
       "tokyoNight": "Tokyo Night",
       "tokyoNightLight": "Tokyo Night 浅色",
       "tokyoNightStorm": "Tokyo Night Storm",
-      "ulyssesLight": "Ulysses 浅色"
+      "ulyssesLight": "Ulysses 浅色",
+      "vue": "Vue 浅色",
+      "ursine": "Ursine 浅色",
+      "lapis": "Lapis 浅色",
+      "blackout": "Blackout 深色",
+      "githubNight": "GitHub 深色"
     }
   },
   "contextMenu": {
@@ -398,6 +421,7 @@
         "trimTrailingNewline": "修剪尾随换行符选项",
         "textDirection": "文本书写方向",
         "hideQuickInsertHint": "隐藏快速创建段落的提示",
+        "hideParagraphFrontButton": "隐藏段落左侧的功能按钮",
         "hideLinkPopup": "当光标悬停在链接上时隐藏链接弹出窗口",
         "autoCheck": "是否自动检查相关任务",
         "preferLooseListItem": "首选列表类型",
@@ -456,7 +480,14 @@
         "hideScrollbars": "隐藏滚动条",
         "openFilesInNewWindow": "在新窗口中打开文件",
         "openFoldersInNewWindow": "在新窗口中打开文件夹",
-        "zoom": "缩放"
+        "zoom": "缩放",
+        "showPathInTitleBar": "在标题栏显示文件夹路径",
+        "showWordCount": "显示字数统计",
+        "wordCountPosition": {
+          "title": "字数统计位置",
+          "topRight": "右上角",
+          "bottomRight": "右下角"
+        }
       },
       "startup": {
         "title": "启动",
@@ -558,10 +589,13 @@
           "rtl": "从右到左"
         },
         "hideQuickInsertHint": "隐藏快速插入提示",
+        "hideParagraphFrontButton": "隐藏段落左侧的功能按钮",
         "hideLinkPopup": "隐藏链接弹出窗口",
         "autoCheck": "自动检查",
         "autoNormalizeLineEndings": "打开时自动将行尾规范化为 LF",
-        "wrapCodeBlocks": "换行代码块"
+        "wrapCodeBlocks": "换行代码块",
+        "formatToolbar": "显示格式工具栏",
+        "formatToolbarAutoHide": "鼠标移到编辑区顶部时才显示工具栏"
       }
     },
     "image": {

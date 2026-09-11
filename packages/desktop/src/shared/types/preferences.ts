@@ -10,6 +10,9 @@ export interface IUserPreferences {
   autoSave?: boolean
   autoSaveDelay?: number
   titleBarStyle?: 'custom' | 'native'
+  titleBarShowPath?: boolean
+  showWordCount?: boolean
+  wordCountPosition?: 'top-right' | 'bottom-right'
   openFilesInNewWindow?: boolean
   openFolderInNewWindow?: boolean
   hideScrollbar?: boolean
@@ -25,7 +28,10 @@ export interface IUserPreferences {
   codeFontSize?: number
   codeFontFamily?: string
   hideQuickInsertHint?: boolean
+  hideParagraphFrontButton?: boolean
   hideLinkPopup?: boolean
+  formatToolbar?: boolean
+  formatToolbarAutoHide?: boolean
   autoPairBracket?: boolean
   autoPairMarkdownSyntax?: boolean
   autoPairQuote?: boolean

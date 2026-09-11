@@ -8,15 +8,11 @@
         :pathname="pathname"
         :filename="filename"
         :active="windowActive"
-        :word-count="wordCount"
         :platform="platform"
         :is-saved="isSaved"
       />
 
-      <div
-        v-if="!init"
-        class="editor-placeholder"
-      />
+      <div v-if="!init" class="editor-placeholder" />
       <recent v-if="!hasCurrentFile && init" />
       <editor-with-tabs
         v-if="hasCurrentFile && init"
@@ -89,7 +85,6 @@ const isSaved = computed(() => currentFile.value?.isSaved)
 // type is `string`. The `<editor-with-tabs>` mount is still gated.
 const markdown = computed<string>(() => currentFile.value?.markdown ?? '')
 const cursor = computed(() => currentFile.value?.cursor)
-const wordCount = computed(() => currentFile.value?.wordCount)
 // `muyaIndexCursor` is loosely typed as `unknown` on the editor store; the
 // downstream prop expects `Object | undefined`. Cast at the boundary.
 const muyaIndexCursor = computed<Record<string, unknown> | undefined>(

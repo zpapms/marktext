@@ -9,7 +9,8 @@ import {
   getLookUp,
   SEPARATOR,
   getInsertBefore,
-  getInsertAfter
+  getInsertAfter,
+  getFormatSubmenu
 } from './menuItems'
 import spellcheckMenuBuilder from './spellcheck'
 import { t } from '../../i18n'
@@ -46,6 +47,8 @@ type ContextMenuEvent = {
 
 // Dynamically fetch menu items to ensure correct translation
 const getContextItems = (): MenuItemConstructorOptions[] => [
+  getFormatSubmenu(),
+  SEPARATOR,
   getInsertBefore(),
   getInsertAfter(),
   SEPARATOR,

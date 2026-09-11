@@ -59,16 +59,12 @@
         rows="10"
         :value="customCss"
         @change="
-          (event: Event) =>
-            onSelectChange('customCss', (event.target as HTMLTextAreaElement).value)
+          (event: Event) => onSelectChange('customCss', (event.target as HTMLTextAreaElement).value)
         "
       />
     </div>
     <separator v-show="false" />
-    <section
-      v-show="false"
-      class="import-themes ag-underdevelop"
-    >
+    <section v-show="false" class="import-themes ag-underdevelop">
       <div>
         <span>{{ t('preferences.theme.openThemesFolder') }}</span>
         <el-button size="small">
@@ -160,239 +156,49 @@ const onSelectChange = (type: keyof PreferencesState, value: unknown): void => {
     border-radius: 5px;
     transition: opacity 0.2s ease;
 
-    &.dark {
-      color: rgba(255, 255, 255, 0.7);
-      background: #282828;
+    /* Typora community themes — Light */
+    &.lapis {
+      color: #40464f;
+      background: #ffffff;
       & a {
-        color: #409eff;
+        color: #4870ac;
       }
     }
-    &.light {
-      color: rgba(0, 0, 0, 0.7);
-      background: rgba(255, 255, 255, 1);
+    &.ursine {
+      color: #333333;
+      background: #fbfbfb;
       & a {
-        color: rgba(33, 181, 111, 1);
+        color: #db4d52;
       }
     }
-    &.graphite {
-      color: rgba(43, 48, 50, 0.7);
-      background: #f7f7f7;
+    &.vue {
+      color: #34495e;
+      background: #ffffff;
       & a {
-        color: rgb(104, 134, 170);
-      }
-    }
-    &.material-dark {
-      color: rgba(171, 178, 191, 0.8);
-      background: #34393f;
-      & a {
-        color: #f48237;
-      }
-    }
-    &.one-dark {
-      color: #9da5b4;
-      background: #282c34;
-      & a {
-        color: rgba(226, 192, 141, 1);
-      }
-    }
-    &.ulysses {
-      color: rgba(101, 101, 101, 0.7);
-      background: #f3f3f3;
-      & a {
-        color: rgb(12, 139, 186);
+        color: #42b983;
       }
     }
 
-    /* New gogh themes - Dark */
-    &.dracula {
-      color: #f8f8f2;
-      background: #282a36;
+    /* Typora community themes — Dark */
+    &.blackout {
+      color: #c6c5b8;
+      background: #1e1e1e;
       & a {
-        color: #bd93f9;
+        color: #ff9100;
       }
     }
-    &.nord {
-      color: #d8dee9;
-      background: #2e3440;
+    &.cobalt {
+      color: #b0b0b0;
+      background: #141d28;
       & a {
-        color: #81a1c1;
+        color: #70bfd9;
       }
     }
-    &.catppuccin-mocha {
-      color: #cdd6f4;
-      background: #1e1e2e;
+    &.github-night {
+      color: #c9d1d9;
+      background: #0d1117;
       & a {
-        color: #89b4fa;
-      }
-    }
-    &.gruvbox-dark {
-      color: #ebdbb2;
-      background: #282828;
-      & a {
-        color: #83a598;
-      }
-    }
-    &.tokyo-night {
-      color: #c0caf5;
-      background: #1a1b26;
-      & a {
-        color: #7aa2f7;
-      }
-    }
-    &.tokyo-night-storm {
-      color: #c0caf5;
-      background: #24283b;
-      & a {
-        color: #7aa2f7;
-      }
-    }
-    &.solarized-dark {
-      color: #839496;
-      background: #002b36;
-      & a {
-        color: #268bd2;
-      }
-    }
-    &.ayu-dark {
-      color: #b3b1ad;
-      background: #0a0e14;
-      & a {
-        color: #39bae6;
-      }
-    }
-    &.ayu-mirage {
-      color: #cbccc6;
-      background: #1f2430;
-      & a {
-        color: #ffcc66;
-      }
-    }
-    &.everforest-dark {
-      color: #d3c6aa;
-      background: #2d353b;
-      & a {
-        color: #a7c080;
-      }
-    }
-    &.rose-pine {
-      color: #e0def4;
-      background: #191724;
-      & a {
-        color: #c4a7e7;
-      }
-    }
-    &.rose-pine-moon {
-      color: #e0def4;
-      background: #232136;
-      & a {
-        color: #c4a7e7;
-      }
-    }
-    &.monokai-pro {
-      color: #fcfcfa;
-      background: #2d2a2e;
-      & a {
-        color: #ffd866;
-      }
-    }
-    &.synthwave-84 {
-      color: #ffffff;
-      background: #262335;
-      & a {
-        color: #ff7edb;
-      }
-    }
-    &.horizon-dark {
-      color: #d5d8da;
-      background: #1c1e26;
-      & a {
-        color: #e95678;
-      }
-    }
-    &.palenight {
-      color: #a6accd;
-      background: #292d3e;
-      & a {
-        color: #82aaff;
-      }
-    }
-    &.oxocarbon-dark {
-      color: #f2f4f8;
-      background: #161616;
-      & a {
-        color: #78a9ff;
-      }
-    }
-    &.kanagawa {
-      color: #dcd7ba;
-      background: #1f1f28;
-      & a {
-        color: #7e9cd8;
-      }
-    }
-    &.nightfox {
-      color: #cdcecf;
-      background: #192330;
-      & a {
-        color: #719cd6;
-      }
-    }
-    &.cyberdream {
-      color: #ffffff;
-      background: #16181a;
-      & a {
-        color: #5ea1ff;
-      }
-    }
-
-    /* New gogh themes - Light */
-    &.catppuccin-latte {
-      color: #4c4f69;
-      background: #eff1f5;
-      & a {
-        color: #1e66f5;
-      }
-    }
-    &.gruvbox-light {
-      color: #3c3836;
-      background: #fbf1c7;
-      & a {
-        color: #458588;
-      }
-    }
-    &.tokyo-night-light {
-      color: #343b58;
-      background: #d5d6db;
-      & a {
-        color: #34548a;
-      }
-    }
-    &.solarized-light {
-      color: #657b83;
-      background: #fdf6e3;
-      & a {
-        color: #268bd2;
-      }
-    }
-    &.ayu-light {
-      color: #575f66;
-      background: #fafafa;
-      & a {
-        color: #399ee6;
-      }
-    }
-    &.everforest-light {
-      color: #5c6a72;
-      background: #fdf6e3;
-      & a {
-        color: #8da101;
-      }
-    }
-    &.rose-pine-dawn {
-      color: #575279;
-      background: #faf4ed;
-      & a {
-        color: #907aa9;
+        color: #f9826c;
       }
     }
 

@@ -246,7 +246,12 @@ export class InlineFormatToolbar extends BaseFloat {
             itemSelector,
             {
                 attrs: {
-                    title: `${i18n.t(icon.tooltip)}\n${icon.shortcut}`,
+                    // Native `title` tooltips are unreliable inside this
+                    // re-patched floating layer, so the label and shortcut are
+                    // rendered by CSS instead (see index.css, [data-tooltip]).
+                    'aria-label': i18n.t(icon.tooltip),
+                    'data-tooltip': i18n.t(icon.tooltip),
+                    'data-shortcut': icon.shortcut,
                 },
                 on: {
                     click: event => this._selectItem(event, icon),

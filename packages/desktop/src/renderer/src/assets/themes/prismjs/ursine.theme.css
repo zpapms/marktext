@@ -1,0 +1,120 @@
+/*
+ * Prism.js Ursine Theme
+ * Ported from the Typora "Ursine" theme (noatpad/typora-theme-ursine).
+ * Code fences use the CodeMirror "3024 Day" palette.
+ */
+
+code[class*='language-'],
+pre.ag-paragraph {
+  color: #3a3432;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  overflow: visible;
+}
+
+pre.ag-paragraph {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 0.25rem;
+}
+
+:not(pre) > code[class*='language-'],
+pre.ag-paragraph {
+  background: #fafafa;
+}
+
+:not(pre) > code[class*='language-'] {
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  white-space: normal;
+  color: #3a3432;
+  background: #fafafa;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #cdab53;
+}
+
+.token.punctuation {
+  color: #3a3432;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #db2d20;
+}
+
+.token.boolean,
+.token.number {
+  color: #a16a94;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #f2b01d;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #ff79c6;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+  color: #01a252;
+}
+
+.token.class-name {
+  color: #e8bbd0;
+}
+
+.token.keyword {
+  color: #db2d20;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #01a0e4;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

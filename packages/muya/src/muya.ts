@@ -334,6 +334,9 @@ export class Muya {
             );
         }
 
+        if ('hideParagraphFrontButton' in options)
+            this.eventCenter.emit('muya-paragraph-front-button', !options.hideParagraphFrontButton);
+
         applyAppearance(this.domNode, options);
 
         if (!forceRender)
